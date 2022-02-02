@@ -1,0 +1,155 @@
+*{
+    
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    scroll-behavior: smooth;
+    
+}
+
+h1,h2 {
+    font-weight: 200;
+   
+  }
+  h1 { font-size: 3.5em; }
+  h2 {
+    color: #888;
+    font-size: 2em;
+  }
+  
+  .S1{
+
+      width: 100%;
+      height: 100vh;
+      font-family: 'Raleway', sans-serif;
+    /*padding: 1em 2em;*/
+    /*font-size: 18px;*/
+    background-image:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0,0,0,0.6)), url("images/K9Yn9bRY7d49RZdWkjvHxK.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: -0.45em;
+    color: whitesmoke;
+    margin-left: -0.4em;
+    position: absolute;
+  
+  }
+  .S1 div{
+    margin-top: 10em;
+    margin-left: 2em;
+   /* margin: 0.4em 0;*/
+  }
+
+  header{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    padding: 20px 0px 20px;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.navbar{
+    display: flex;
+    position: relative;
+    left: 9%;
+    
+}
+.navbar li{
+    list-style: none;
+}
+.navbar a{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 700;
+}
+  
+ .btn-Connexion{
+    padding: 10px 50px; 
+   margin-top: -10px;
+   text-transform:uppercase ;
+   border: 1px solid #8a068f;
+   border-radius: 6px;
+   position: relative;
+}
+#btn-Connexion{
+    background:#8a068f ;
+}
+
+
+ .btn-Connexion:hover{
+    background:#8a068f ;
+    transition: ease-out;
+ }
+ #btn-Connexion:hover{
+    background:#730477 ;
+    transition: ease-out;
+    text-decoration: none;
+ }
+ .navbar a:hover{
+   text-decoration:4px solid underline #8a068f;
+   
+}
+
+ 
+header.sticky{
+    background: #fff;
+    padding: 3px 3px;
+    box-shadow: 0px 5px 20px rgba(0,0,0, 0.05);
+}
+
+header.sticky .logo{
+    color: #000;
+}
+
+header.sticky .navbar li a {
+    color: #000;
+}
+
+header.sticky li a:hover{
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+header.sticky .navbar .btn-Connexion {
+    
+    background:#8a068f ;
+}
+header.sticky .navbar .btn-Connexion:hover {
+    
+    background:#730477 ;
+    text-decoration: none;
+}
+header.sticky .navbar #btn-Connexion {
+    
+    background:transparent ;
+    color: #8a068f; 
+}
+header.sticky .navbar #btn-Connexion:hover {
+    
+    background:#8a068f ;
+    color: white; 
+    transition: ease-out;
+}
+
+@media (max-width: 991px) {
+header, 
+header.sticky{
+    padding: 10px 20px;}
+}
+
+.S2{
+   
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    margin-top: 615px;
+    
+}
+.S2 p{
+    color: blanchedalmond;
+
+}
