@@ -13,16 +13,25 @@ include_once 'includes/database-linck.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ST.css">
+    <link rel="stylesheet" href="styleFormulair.css">
     <title>Document</title>
 </head>
 <body >
-    <nav>
-        <ul>
-            <li>Connexion</li>
-            <li>S'inscrire</li>
-        </ul>
-    </nav>
+<header class="header">
+  <a href="" >LOGO</a>
+  <form action="formulair.php" method="POST">
+  <ul class="navbar">
+    <li><input placeholder="entre pseudo ou email" name="pseudo" class="inpForgotPass"  type="text"></li>
+    <li><input name="passW" placeholder="mot de passe" class="inpForgotPass"  type="password"></li>
+    <button class="btn-Connexion">Connexion</button>
+  </ul>
+  </form>
+    
+    
+    
+    
+ 
+</header>
 
 
 

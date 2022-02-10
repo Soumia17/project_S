@@ -12,8 +12,10 @@ $mail = new PHPMailer;
 $mail->isSMTP();                      // Set mailer to use SMTP -----//// hado khalihom matbedlihom 
 $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers -----//// hado khalihom matbedlihom 
 $mail->SMTPAuth = true;               // Enable SMTP authentication -----//// hado khalihom matbedlihom 
-$mail->Username = 'ab28fb@gmail.com';   // SMTP username -----//// hado khalihom matbedlihom 
-$mail->Password = 'gputxcgsjgueloam';   // SMTP password -----//// hado khalihom matbedlihom 
+//$mail->Username = 'ab28fb@gmail.com';   // SMTP username -----//// hado khalihom matbedlihom 
+//$mail->Password = 'gputxcgsjgueloam';   // SMTP password -----//// hado khalihom matbedlihom 
+$mail->Username = 'mustapha.stambouli29m@gmail.com';
+$mail->Password = 'aqomztvlzlvldtjm';
 $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
 $mail->Port = 587;    
 $mail->setFrom('sender@soumia.com', 'soumia'); 
