@@ -43,14 +43,16 @@
 
 .navbar .nav_right ul li.nr_li{
 	margin-left: 25px;
-	cursor: pointer;
-	
+	cursor: pointer;	
 	font-size: 20px;
 	position: relative;
 }
 
 .navbar .nav_right ul li.nr_li:hover {
     color: #8a068f;
+}
+.dd_menu .dd_right a{
+	text-decoration: none;
 }
 
 .navbar .nav_right ul li img{
@@ -89,6 +91,9 @@
 	margin-bottom: 10px;
 	color: #868686;
 }
+.navbar .dd_right li:hover{
+	color: black;
+}
 
 .navbar .dd_menu:before{
 	content: "";
@@ -100,7 +105,7 @@
 }
 
 .navbar .dd_main.active .dd_menu{
-	display: flex;
+	display: flex;	
 }
 
 .box-recherch{
@@ -337,7 +342,7 @@ width: 100%;
   justify-content: center;
   align-items: center;
   
-  position: relative;
+  
 }
 .Bien_venu .bien{
 height:50% ;
@@ -367,8 +372,8 @@ margin-top: 5rem;
  padding: 2rem;
  
 }
-.services_bien i{
-font-size: 5rem;
+.services_bien img{
+size: 5rem;
 
 }
  #fa-music{
@@ -376,13 +381,19 @@ font-size: 5rem;
   font-size: 1.5rem;
   }
 .service_i{
-  width: 7rem;
+  width: 6rem;
   color: #000;
   text-align: center;
 }
-.service_i:hover i{
-	color:#8a068f ;
+.service_i img{
+	width: 100%;
+	
+
+}
+.service_i:hover img{
+	filter: invert(12%) sepia(99%) saturate(3997%) hue-rotate(291deg) brightness(81%) contrast(106%);
   }
+ 
 
 hr{
   color: #8a068f;

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style_Administration.css">
+    <title>Document</title>
+</head>
+<body>   
+        <header class="page-header">
+          <nav>
+            
+            <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+              <i class="fas fa-bars"></i>
+            </button>
+            <ul class="admin-menu">
+              <a href="">LOGO</a>
+              <li class="menu-heading">
+
+                <h3>Admin</h3>
+              </li>
+              
+                <li>
+                  <a href="/admin/Administration.html">
+                    
+                    <i class="fas fa-home"></i>
+                    
+                    <span>Accueil</span>
+                  </a>
+                </li>
+                <li>
+                <a href="#0">
+                  
+                  <i class="fas fa-user-shield"></i>
+                  
+                  <span>Administrateurs</span>
+                </a>
+              </li>
+              <li>
+                <a href="#0">
+                  <i class="fas fa-users"></i>
+                  <span>utilisateurs</span>
+                </a>
+              </li>
+              <li>
+                <a href="#0">
+                  <i class="far fa-comments"></i>
+                  <span>Message</span>
+                </a>
+              </li>
+              <li>
+                <a href="#0">
+                  <i class="fas fa-briefcase"></i>
+                  <span>Services</span>
+                </a>
+              </li>
+             
+             
+              <li>
+                <div class="switch">
+                  <input type="checkbox" id="mode" checked>
+                  <label for="mode">
+                    <span></span>
+                    <span>Dark</span>
+                  </label>
+                </div>
+                <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+                  <i class="fas fa-chevron-left"></i>
+                  <span>Effondrer</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <section class="page-content">
+          <section class="search-and-user">
+            <form action="GET">
+              <input type="search" placeholder="Chercher...">
+              <button type="submit" aria-label="submit form">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+            <div class="admin-profile">
+              <span class="greeting">Hello admin</span>
+              <img class="image_profil"  src="images_Admin/images.jpg" alt="profile_img">
+              
+              <div class="notifications">
+               <!-- <span class="badge">1</span>-->
+                
+              </div>
+            </div>
+           
+          </section>
+          <section class="Add_Service">
+            <div class="but_Add_Service">
+                <a href="#newService_Formulair" onclick="toggleMenu()"><i class="fas fa-plus"></i>ajoute un service</a>
+      </div>
+          </section>
+  
+          <section class="grid_SERVICE">
+              
+       
+            <article>
+                <div class="card">
+                    <img src="/admin/images_Admin/téléchargement.jpg" alt="Avatar">
+                    <div class="card-container">
+                     <a href=""> <h4><b>John Doe</b></h4> </a>
+                      <p>Architect & Enginee
+                          HHHJBVJKHB
+                          JHFVHJCGHGCJHYFV
+                          HGFGFSFGSJDKHTD
+                      </p> 
+                    </div>
+                    <button id="but_card" class="openModal2">supprime le service</button>
+            </article>
+            
+            
+            
+          </section>
+                 
+          <section id="newService_Formulair" class="newService_Formulair">
+              
+              <form action="">
+               
+               
+                <h2>Ajouter un nouveau service</h2>
+                    
+                    
+                        <label for="">le nom de sercice</label>
+                        <input type="text" class="field" >
+                        <span>Entrez un titre clair qui décrit le service. N'entrez pas de symboles ou de mots tels que « exclusivement », « pour la première fois », « pour un temps limité », etc.</span>
+                        <br>
+                        <label for="">Description du service</label>
+                        <textarea class="field"></textarea>
+                        <span>Entrez une description précise du service qui inclut toutes les informations et conditions</span>
+                        <br>
+                        <label for="">Ajoute une image  .png</label>
+                        <div class="drop-zone">
+                            <span class="drop-zone__prompt">cliquez pour télécharger</span>
+                            <input type="file" name="myFile" class="drop-zone__input">
+                          </div>
+
+                          <button>sauver</button>
+          
+              </form>
+
+
+          </section>
+         
+        </section>
+
+</body>
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="Control-Administration.js"></script>
+<script src="Control_Admin.js"></script>
+<script src="controlService.js"></script>
+</html>
