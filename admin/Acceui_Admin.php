@@ -9,7 +9,7 @@ $conn;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style-AccueiAdmin.css">
+    <link rel="stylesheet" href="Style_AccuiAdmin.css">
     <title>Document</title>
 </head>
 <body>
@@ -47,7 +47,16 @@ $conn;
                     </li>
                     
                     <li class="nr_li dd_main">
-                        <img class="image_profil"  src="images_Admin/images.jpg" alt="profile_img">
+                    <?php
+      $sql="SELECT * FROM userinformation";
+      $resL = mysqli_query($conn,$sql);
+      while($L=mysqli_fetch_assoc($resL)){
+       $image= $L['image'];
+
+      }
+      ?>
+
+                        <img class="image_profil"  src="<?php echo($image)?>" alt="profile_img">
                         
                         <div class="dd_menu">
                             <div class="dd_left">

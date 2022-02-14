@@ -74,7 +74,7 @@ switchInput.addEventListener("input", function () {
     modal.style.display = "none";
   }
 }*/
-
+//ùodal
 var modal = document.querySelector(".modal");
 var btn = document.querySelector(".openModal");
 var span = document.querySelector(".close");

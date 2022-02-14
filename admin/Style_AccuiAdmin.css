@@ -366,7 +366,7 @@ margin-top: 5rem;
 .services_bien{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-  gap:1.5rem;
+  gap:0.5rem;
   
  margin-left: 9rem;
  padding: 2rem;
@@ -375,13 +375,14 @@ margin-top: 5rem;
 .services_bien img{
 size: 5rem;
 
+
 }
  #fa-music{
    
   font-size: 1.5rem;
   }
 .service_i{
-  width: 6rem;
+  width: 7rem;
   color: #000;
   text-align: center;
 }
@@ -398,7 +399,7 @@ size: 5rem;
 hr{
   color: #8a068f;
   border-top: 3px solid;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
 
 }
 .services_bien a{

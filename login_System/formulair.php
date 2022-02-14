@@ -21,14 +21,42 @@ $conn;
 
     $result=mysqli_query($conn,$sql);
     $result1=mysqli_query($conn,$sql1);
+    
+
+
 
     if(mysqli_num_rows($result)==1 || mysqli_num_rows($result1)==1){
+        if(mysqli_num_rows($result)==1){
+            while($g=mysqli_fetch_assoc($result)){
+                $admin=$g['admin'];
+
+            }
+
+        }
+        else 
+        if(mysqli_num_rows($result1)==1){
+            while($g=mysqli_fetch_assoc($result1)){
+                $admin=$g['admin'];
+
+            }
+
+        }
+        if($admin==1){
+            $_SESSION['pseudo'] = $_POST['pseudo'];
+        $_SESSION['passW'] = $passwo;
+        header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
+        echo"yesssss";
+        exit();
+        }
         
+
+        else{
         $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
         header('location: http://localhost/PFFE/login_System/p.php');
         echo"yesssss";
         exit();
+    }
     }
     else{
 

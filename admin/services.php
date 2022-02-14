@@ -1,3 +1,12 @@
+<?php
+include_once 'includes/database-linck.php';
+$conn;
+
+$sql="SELECT * FROM services";
+$res = mysqli_query($conn,$sql);
+$del="";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style_Administration.css">
+    <link rel="stylesheet" href="StyleService.css">
+    
+
     <title>Document</title>
 </head>
 <body>   
@@ -22,7 +34,7 @@
               </li>
               
                 <li>
-                  <a href="/admin/Administration.html">
+                  <a href="http://localhost/PFFE/admin/Acceui_Admin.php">
                     
                     <i class="fas fa-home"></i>
                     
@@ -30,7 +42,7 @@
                   </a>
                 </li>
                 <li>
-                <a href="#0">
+                <a href="">
                   
                   <i class="fas fa-user-shield"></i>
                   
@@ -97,53 +109,89 @@
                 <a href="#newService_Formulair" onclick="toggleMenu()"><i class="fas fa-plus"></i>ajoute un service</a>
       </div>
           </section>
+          
   
           <section class="grid_SERVICE">
-              
+
+         
+          <?php
+           
+            
+
+           while($g=mysqli_fetch_assoc($res)){
+               ?>
        
             <article>
+
                 <div class="card">
-                    <img src="/admin/images_Admin/téléchargement.jpg" alt="Avatar">
+                    <img src="<?php echo ($g['serviceIcon'])?>" alt="Avatar">
                     <div class="card-container">
-                     <a href=""> <h4><b>John Doe</b></h4> </a>
-                      <p>Architect & Enginee
-                          HHHJBVJKHB
-                          JHFVHJCGHGCJHYFV
-                          HGFGFSFGSJDKHTD
+                     <h4><b><?php echo ($g['serviceName'])?></b></h4>
+                      <p><?php echo ($g['serviceDescription'])?>
                       </p> 
                     </div>
-                    <button id="but_card" class="openModal2">supprime le service</button>
+                    <button href=""   id="but_card"  onclick="document.getElementById('id01').style.display='block'" > supprime le service</button>
+
+
+                    <div id="id01" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('id01').style.display='none'" class="close">×</span>
+                     <div class="icon-box">
+                      <span>!</span>
+                    
+                   </div>	
+                     <p>Êtes-vous sûr de vouloir supprimer l'offre</p>
+                     
+                     <a name="delet" href="isertServis.php?del=<?php echo $g['id']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                    
+                     <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
+                     </div> 
+                
             </article>
+
+            
+            <?php
+
+           }
+           
+                 
+         
+            ?>
+             
             
             
-            
+              
           </section>
                  
           <section id="newService_Formulair" class="newService_Formulair">
               
-              <form action="">
+              <form action="isertServis.php" method="POST">
                
                
                 <h2>Ajouter un nouveau service</h2>
                     
                     
                         <label for="">le nom de sercice</label>
-                        <input type="text" class="field" >
+                        <input name="serviceName" type="text" class="field" >
                         <span>Entrez un titre clair qui décrit le service. N'entrez pas de symboles ou de mots tels que « exclusivement », « pour la première fois », « pour un temps limité », etc.</span>
                         <br>
                         <label for="">Description du service</label>
-                        <textarea class="field"></textarea>
+                        <textarea name="serviceDescription" class="field"></textarea>
                         <span>Entrez une description précise du service qui inclut toutes les informations et conditions</span>
                         <br>
                         <label for="">Ajoute une image  .png</label>
                         <div class="drop-zone">
                             <span class="drop-zone__prompt">cliquez pour télécharger</span>
-                            <input type="file" name="myFile" class="drop-zone__input">
+                            <input name="serviceIcon" type="file" name="myFile" class="drop-zone__input">
                           </div>
 
-                          <button>sauver</button>
+                          <button name="save">sauver</button>
           
               </form>
+
+           
+
 
 
           </section>
