@@ -20,7 +20,7 @@ $del="";
     <title>Document</title>
 </head>
 <body>   
-        <header class="page-header">
+<header class="page-header">
           <nav>
             
             <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
@@ -34,7 +34,7 @@ $del="";
               </li>
               
                 <li>
-                  <a href="http://localhost/PFFE/admin/Acceui_Admin.php">
+                  <a href="http://localhost/PFFE/admin/Administration.html">
                     
                     <i class="fas fa-home"></i>
                     
@@ -42,7 +42,7 @@ $del="";
                   </a>
                 </li>
                 <li>
-                <a href="">
+                <a href="http://localhost/PFFE/admin/Administrateurs.html">
                   
                   <i class="fas fa-user-shield"></i>
                   
@@ -50,19 +50,19 @@ $del="";
                 </a>
               </li>
               <li>
-                <a href="#0">
+                <a href="http://localhost/PFFE/admin/utilisateurs.html">
                   <i class="fas fa-users"></i>
                   <span>utilisateurs</span>
                 </a>
               </li>
               <li>
-                <a href="#0">
+                <a href="http://localhost/PFFE/admin/Message.html">
                   <i class="far fa-comments"></i>
                   <span>Message</span>
                 </a>
               </li>
               <li>
-                <a href="#0">
+                <a href="http://localhost/PFFE/admin/services.php">
                   <i class="fas fa-briefcase"></i>
                   <span>Services</span>
                 </a>
@@ -77,6 +77,11 @@ $del="";
                     <span>Dark</span>
                   </label>
                 </div>
+                <a href="http://localhost/PFFE/admin/Acceui_Admin.php">
+                  
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>sortir de l'dministration</span>
+                </a>
                 <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
                   <i class="fas fa-chevron-left"></i>
                   <span>Effondrer</span>
@@ -130,18 +135,19 @@ $del="";
                       <p><?php echo ($g['serviceDescription'])?>
                       </p> 
                     </div>
-                    <button href=""   id="but_card"  onclick="document.getElementById('id01').style.display='block'" > supprime le service</button>
+                    <button  id="but_card"  onclick="document.getElementById('<?php echo $g['id'] ?>').style.display='block'" > supprime le service</button>
+                    
 
 
-                    <div id="id01" class="modal">
+                    <div id="<?php echo $g['id'] ?>" class="modal">
                      
                      <div class="modalContent">
-                     <span onclick="document.getElementById('id01').style.display='none'" class="close">×</span>
+                     <span onclick="document.getElementById('<?php echo $g['id'] ?>').style.display='none'" class="close">×</span>
                      <div class="icon-box">
                       <span>!</span>
                     
                    </div>	
-                     <p>Êtes-vous sûr de vouloir supprimer l'offre</p>
+                     <p>Êtes-vous sûr de vouloir supprimer le service</p>
                      
                      <a name="delet" href="isertServis.php?del=<?php echo $g['id']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
                     
@@ -165,28 +171,35 @@ $del="";
           </section>
                  
           <section id="newService_Formulair" class="newService_Formulair">
+            
               
-              <form action="isertServis.php" method="POST">
+              <form id="enviar" action="isertServis.php" method="POST">
+
                
                
                 <h2>Ajouter un nouveau service</h2>
+
+               <center> <div class="alert" id="alert" >
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <span id="echoAlert"></span>
+</div></center>
                     
                     
                         <label for="">le nom de sercice</label>
-                        <input name="serviceName" type="text" class="field" >
+                        <input name="serviceName" id="customx" type="text" class="field" >
                         <span>Entrez un titre clair qui décrit le service. N'entrez pas de symboles ou de mots tels que « exclusivement », « pour la première fois », « pour un temps limité », etc.</span>
                         <br>
                         <label for="">Description du service</label>
-                        <textarea name="serviceDescription" class="field"></textarea>
+                        <textarea id="textarea" name="serviceDescription" class="field"></textarea>
                         <span>Entrez une description précise du service qui inclut toutes les informations et conditions</span>
                         <br>
                         <label for="">Ajoute une image  .png</label>
                         <div class="drop-zone">
                             <span class="drop-zone__prompt">cliquez pour télécharger</span>
-                            <input name="serviceIcon" type="file" name="myFile" class="drop-zone__input">
+                            <input name="serviceIcon" id="fileUpload" type="file" name="myFile" class="drop-zone__input">
                           </div>
 
-                          <button name="save">sauver</button>
+                          <button  name="save">sauver</button>
           
               </form>
 

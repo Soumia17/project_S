@@ -25,6 +25,6 @@ $serviceName=$_POST['serviceName'];
 
 
 
-               //  header('location: http://localhost/PFFE/admin/services.php');
+                header('location: http://localhost/PFFE/admin/services.php');
 
 

@@ -1,0 +1,278 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="Style_Administration.css">
+        <link rel="stylesheet" href="Style_Administrateur.css">
+        
+        
+
+        
+        <title>Document</title>
+    </head>
+    <body>   
+            <header class="page-header">
+              <nav>
+                
+                <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+                  <i class="fas fa-bars"></i>
+                </button>
+                <ul class="admin-menu">
+                  <a href="">LOGO</a>
+                  <li class="menu-heading">
+    
+                    <h3>Admin</h3>
+                  </li>
+                  
+                    <li>
+                      <a href="http://localhost/PFFE/admin/Administration.html">
+                        
+                        <i class="fas fa-home"></i>
+                        
+                        <span>Accueil</span>
+                      </a>
+                    </li>
+                    <li>
+                    <a href="http://localhost/PFFE/admin/Administrateurs.html">
+                      
+                      <i class="fas fa-user-shield"></i>
+                      
+                      <span>Administrateurs</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost/PFFE/admin/utilisateurs.html">
+                      <i class="fas fa-users"></i>
+                      <span>utilisateurs</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost/PFFE/admin/Message.html">
+                      <i class="far fa-comments"></i>
+                      <span>Message</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost/PFFE/admin/services.php">
+                      <i class="fas fa-briefcase"></i>
+                      <span>Services</span>
+                    </a>
+                  </li>
+                 
+                 
+                  <li>
+                    <div class="switch">
+                      <input type="checkbox" id="mode" checked>
+                      <label for="mode">
+                        <span></span>
+                        <span>Dark</span>
+                      </label>
+                    </div>
+                    <a href="http://localhost/PFFE/admin/Acceui_Admin.php">
+                      
+                      <i class="fas fa-sign-out-alt"></i>
+                      <span>sortir de l'dministration</span>
+                    </a>
+                    <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+                      <i class="fas fa-chevron-left"></i>
+                      <span>Effondrer</span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </header>
+            <section class="page-content">
+              <section class="search-and-user">
+                <form action="GET">
+                  <input type="search" placeholder="Chercher...">
+                  <button type="submit" aria-label="submit form">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>
+                <div class="admin-profile">
+                  <span class="greeting">Bonjour  admin</span>
+                  <img class="image_profil"  src="images_Admin/images.jpg" alt="profile_img">
+                  
+                  <div class="notifications">
+                   <!-- <span class="badge">1</span>-->
+                    <svg>
+                      <use xlink:href="#users"></use>
+                    </svg>
+                  </div>
+                </div>
+              </section>
+              <section class="grid">
+           
+                <article>
+                    <div class="admin_num">
+                        <div class="admin_num_1"> 
+                            <span>10</span><br>
+
+                            <label for="">Admin</label>
+                        </div>
+                        <div class="admin_num_2">
+                           <img src="images_Admin/admin-avec-roues-dentees.png" alt="">
+                        </div>
+
+                    </div>
+                </article>
+                <article>
+                    <div class="admin_num">
+                        <div class="admin_num_1"> 
+                            <span>10</span><br>
+                            
+                            <label for="">en ligne</label>
+                        </div>
+                        <div class="admin_num_2">
+                           <img src="images_Admin//cochez-le-cercle-interieur.png" alt="">
+                        </div>
+
+                    </div>
+                </article>
+                </section>
+                <section class="Add_Service">
+                    <div class="but_Add_Service">
+                        <a href="#newService_Formulair" onclick="toggleMenu()"><i class="fas fa-plus"></i>ajoute un admin</a>
+              </div>
+                  </section>
+
+                <section class="etoile" id="etoile">
+                    <div class="box-etoile">
+                    <div class="card">
+                        <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
+                        <div class="card-container">
+                         <a href=""> <h4><b>John Doe</b></h4> </a>
+                          <p> Admin de puis <?php echo date("j, n, Y"); ?></p> 
+                        </div>
+                        <button id="but_admin" class="openModal2">envoye un message</button>
+
+                        </div>
+                    </div>
+                </section>
+
+
+                <div class="condition" onscroll="myFunction()" id="myDIV">
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    test<br />
+                    
+
+                    
+                
+                  </div>
+
+                  <input type="radio" id="contactChoice1"
+     name="contact" value="email">
+    <label for="contactChoice1">Email</label>
+                    
+
+               <section id="new_admin" >
+
+
+           
+
+            
+                   
+                <label for="">Rechercher un utilisateur :</label>
+                <div class="search-box">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Type to Search...">
+                </div>
+
+
+                <div class="box-etoile">
+                  <div class="card">
+                    <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
+                    <div class="card-container">
+                     <a href=""> <h4><b>John Doe</b></h4> </a>
+                      <p> Admin de puis <?php echo date("j, n, Y"); ?></p> 
+                    </div>
+                    <button id="but_admin" class="openModal2">envoye un message</button>
+
+                    </div>
+                   
+
+                            </div>
+
+                            <label for="">cree un copmte administrateur :</label>
+
+
+                             
+                            <form action="#">
+                                <div class="user-details">
+                                  <div class="input-box">
+                                    <span class="details">Full Name</span>
+                                    <input type="text" placeholder="Enter your name" required>
+                                  </div>
+                                  <div class="input-box">
+                                    <span class="details">Username</span>
+                                    <input type="text" placeholder="Enter your username" required>
+                                  </div>
+                                  <div class="input-box">
+                                    <span class="details">Email</span>
+                                    <input type="text" placeholder="Enter your email" required>
+                                  </div>
+                                  <div class="input-box">
+                                    <span class="details">Phone Number</span>
+                                    <input type="text" placeholder="Enter your number" required>
+                                  </div>
+                                  <div class="input-box">
+                                    <span class="details">Password</span>
+                                    <input type="text" placeholder="Enter your password" required>
+                                  </div>
+                                  <div class="input-box">
+                                    <span class="details">Confirm Password</span>
+                                    <input type="text" placeholder="Confirm your password" required>
+                                  </div>
+                                </div>
+                               
+                                <div class="button">
+                                  <input type="submit" value="Register">
+                                </div>
+                              </form>
+
+           
+
+                
+
+
+                
+
+            
+
+                
+
+
+                
+                
+               
+             
+               </section>
+                    
+                
+              </section>
+              
+    
+    </body>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="Control-Administration.js"></script>
+    <script src="Control_Admin.js"></script>
+    <script src="/login_System/testRegester.js"></script>
+   <script>
+
+
+   </script>
+   
+    </html>
+</body>
+</html>
