@@ -19,8 +19,12 @@ $del="";
 
     <title>Document</title>
 </head>
-<body>   
+<body>  
+  
+
 <header class="page-header">
+
+
           <nav>
             
             <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
@@ -42,7 +46,7 @@ $del="";
                   </a>
                 </li>
                 <li>
-                <a href="http://localhost/PFFE/admin/Administrateurs.html">
+                <a href="http://localhost/PFFE/admin/lesAdmin.php">
                   
                   <i class="fas fa-user-shield"></i>
                   
@@ -90,6 +94,7 @@ $del="";
             </ul>
           </nav>
         </header>
+        
         <section class="page-content">
           <section class="search-and-user">
             <form action="GET">

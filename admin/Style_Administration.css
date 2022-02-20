@@ -58,11 +58,11 @@ button {
   cursor: pointer;
 }
 
-input {
+#mode {
   -webkit-appearance: none;
 }
 
-[type="checkbox"] {
+#mode [type="checkbox"] {
   position: absolute;
   
 }

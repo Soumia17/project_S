@@ -1,4 +1,9 @@
+<?php
+include_once 'includes/database-linck.php';
+$conn;
 
+
+?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -7,13 +12,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="Style_Administration.css">
         <link rel="stylesheet" href="Style_Administrateur.css">
+       
         
         
 
         
         <title>Document</title>
     </head>
-    <body>   
+    <body onload="document.getElementById('new_admin').style.display='block';">   
             <header class="page-header">
               <nav>
                 
@@ -135,104 +141,158 @@
                 </section>
                 <section class="Add_Service">
                     <div class="but_Add_Service">
-                        <a href="#newService_Formulair" onclick="toggleMenu()"><i class="fas fa-plus"></i>ajoute un admin</a>
+                        <a href="#new_admin" onclick="document.getElementById('new_admin').style.display='block';document.getElementById('con').style.display='block'"><i class="fas fa-plus"></i>ajoute un admin</a>
               </div>
                   </section>
 
                 <section class="etoile" id="etoile">
                     <div class="box-etoile">
+                  <?php  
+                  $searsh="SELECT * FROM userinformation WHERE Theadmin=1";
+    $admin = mysqli_query($conn,$searsh);
+   
+    
+   
+   
+   while($infoAdmin=mysqli_fetch_assoc($admin)){?>
                     <div class="card">
                         <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
                         <div class="card-container">
-                         <a href=""> <h4><b>John Doe</b></h4> </a>
-                          <p> Admin de puis <?php echo date("j, n, Y"); ?></p> 
+                         <a href=""> <h4><b><?php echo ($infoAdmin["psudo"]);?></b></h4> </a>
+                          <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["userDate"]);?> </p>
+                          
+                        </div>
+                        <button id="but_admin"  class="openModal2">envoye un message</button>
+
+                        </div>
+                        <?php
+   }
+?>
+                    </div>
+                </section>
+                
+
+                <div id="con" class="modal_condition">
+
+                  
+                  
+                   
+                    <div class="display_condition">
+                      <span onclick="document.getElementById('con').style.display='none';document.getElementById('new_admin').style.display='none'" class="close" title="Close Modal">×</span> 
+                      <h3>Attention</h3>
+                    <div class="condition" onscroll="myFunction()" id="myDIV">
+                      
+                     <p> L'ajout d'un nouvel administrateur peut entraîner des dangers !</p>
+                      <ul>
+                       <p> Le nouvel administrateur peut:</p>
+                        <li>. Ajoute un nouvel admin .</li>
+                        <li>. blocke un contacte .</li>
+                        <li>. sepprime et ajoute un service .</li>
+                        <li>. sepprime un offer .</li>
+                        <li>. repondre aux message .</li>
+                        Tout cela peut arriver sans votre consentement.
+                      </ul>
+                        <hr>
+                        
+    
+                        <input onchange="document.getElementById('block').disabled = !this.checked;" type="checkbox" id="scales" name="scales"
+              value="Scales">
+      <label for="scales">J'accepte et continuer.</label> <br>
+      
+    </div>
+     
+      <button id="block" onclick="block()" disabled class="but_condition"> J'accepte</button>
+                      </div>
+                    
+                     
+                    
+                </div>
+
+                
+
+               
+
+             
+       
+                  
+                    
+
+               <section id="new_admin" >
+               <label for="">Rechercher un utilisateur :</label>
+<form  action="lesAdmin.php" method="GET">
+<div class="search-box">
+       
+         <button name="onSub"  class="btn-search"><i class="fas fa-search"></i></button>
+         
+       <input type="search"  name="search" class="input-search" placeholder="Type to Search...">
+       
+         
+     </div>
+     </form>
+
+     <div class="box-etoile">
+       <?php
+      if(isset($_GET['search'])){
+        $resu=$_GET['search'];
+        $searsh="SELECT * FROM userinformation WHERE psudo LIKE '%$resu%'";
+        $res = mysqli_query($conn,$searsh);
+      
+      
+
+
+        while($infoAdmin=mysqli_fetch_assoc($res)){?>
+                 
+                    <div class="card">
+                        <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
+                        <div class="card-container">
+                         <a href=""> <h4><b><?php echo($infoAdmin["psudo"]) ?> </b></h4> </a>
+                          <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ ?> </p>
+                          
                         </div>
                         <button id="but_admin" class="openModal2">envoye un message</button>
 
                         </div>
+                        <?php
+       }}
+                        ?>
+ 
                     </div>
-                </section>
-
-
-                <div class="condition" onscroll="myFunction()" id="myDIV">
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    test<br />
-                    
-
-                    
-                
-                  </div>
-
-                  <input type="radio" id="contactChoice1"
-     name="contact" value="email">
-    <label for="contactChoice1">Email</label>
-                    
-
-               <section id="new_admin" >
-
-
-           
-
-            
-                   
-                <label for="">Rechercher un utilisateur :</label>
-                <div class="search-box">
-                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                    <input type="text" class="input-search" placeholder="Type to Search...">
-                </div>
-
-
-                <div class="box-etoile">
-                  <div class="card">
-                    <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
-                    <div class="card-container">
-                     <a href=""> <h4><b>John Doe</b></h4> </a>
-                      <p> Admin de puis <?php echo date("j, n, Y"); ?></p> 
-                    </div>
-                    <button id="but_admin" class="openModal2">envoye un message</button>
-
-                    </div>
-                   
-
-                            </div>
+    
+                            <hr>
 
                             <label for="">cree un copmte administrateur :</label>
 
 
                              
-                            <form action="#">
+                            <form action="http://localhost/PFFE/admin/newAdmin.php" method="POST">
                                 <div class="user-details">
                                   <div class="input-box">
-                                    <span class="details">Full Name</span>
-                                    <input type="text" placeholder="Enter your name" required>
+                                    <span class="details">Nom</span>
+                                    <input type="text" name="nom"  required>
                                   </div>
                                   <div class="input-box">
-                                    <span class="details">Username</span>
-                                    <input type="text" placeholder="Enter your username" required>
+                                    <span class="details"> Prenom</span>
+                                    <input type="text" name="prenom" required>
                                   </div>
                                   <div class="input-box">
-                                    <span class="details">Email</span>
-                                    <input type="text" placeholder="Enter your email" required>
+                                    <span class="details">pseudo</span>
+                                    <input type="text" name="userName" required>
                                   </div>
                                   <div class="input-box">
-                                    <span class="details">Phone Number</span>
-                                    <input type="text" placeholder="Enter your number" required>
+                                    <span class="details">email</span>
+                                    <input type="email" name="email"  required>
                                   </div>
                                   <div class="input-box">
-                                    <span class="details">Password</span>
-                                    <input type="text" placeholder="Enter your password" required>
+                                    <span class="details">mote de passe</span>
+                                   
+                                    <input type="password" name="password" id="password"  required>
+                                    <i class="password-toggle far fa-eye-slash" id="password-toggle" onclick="passwordToggle()"></i>
                                   </div>
                                   <div class="input-box">
-                                    <span class="details">Confirm Password</span>
-                                    <input type="text" placeholder="Confirm your password" required>
+                                    <span class="details"> confirme le mote de passe</span>
+                                    <input type="password" id="Cpassword"  required>
+                                    <i class="password-toggle far fa-eye-slash" id="Cpassword-toggle" onclick="CpasswordToggle()"></i>
+                                    
                                   </div>
                                 </div>
                                
@@ -268,10 +328,7 @@
     <script src="Control-Administration.js"></script>
     <script src="Control_Admin.js"></script>
     <script src="/login_System/testRegester.js"></script>
-   <script>
-
-
-   </script>
+    <script src="contol_lesAdmin.js"></script>
    
     </html>
 </body>
