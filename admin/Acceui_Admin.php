@@ -1,6 +1,16 @@
 <?php
+session_start();
 include_once 'includes/database-linck.php';
 $conn;
+$action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$admi=$info['Theadmin'];
+$_SESSION['user']=$info['psudo'];
+$_SESSION['img']=$info['image'];
+
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +109,7 @@ $conn;
       <div class="service_i_bien">
       <div class="bien">
 
-         <center> <h2>Bien venu <span></span></h2>
+         <center> <h2>Bien venu <?php echo ( $_SESSION['pseudo']);?> <span></span></h2>
           <span>hhhhhhhhhhkhjfgjhgfjtgdj,gggg,tft,jhg</span></center>
       </div>
       <div class="services_bien">

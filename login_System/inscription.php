@@ -72,24 +72,28 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
  
      if(mysqli_num_rows($psudo_suery_run)>0){?>
           <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta http-equiv="X-UA-Compatible" content="IE=edge">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Document</title>
-          </head>
-          <body>
-          <script  >
-        //alert("psuedo existe deja");
-        swal("psuedo existe deja!").then(function(){
+       <html lang="en">
+       <head>
+           <meta charset="UTF-8">
+           <meta http-equiv="X-UA-Compatible" content="IE=edge">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Document</title>
+       </head>
+       <body>
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script  >
+   //alert("email existe deja");
+   swal("pseudo existe deja!").then(function(){
        window.location= "http://localhost/PFFE/login_System/regester.php"
    });
-    </script>
-          </body>
-          </html>
+</script>
+       </body>
+       </html>
          <?php
          }
+
+         
          
  
  }

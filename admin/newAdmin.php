@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once 'includes/database-linck.php';
 
  
@@ -78,9 +78,12 @@ if(mysqli_num_rows($email_query_run)>0 || mysqli_num_rows($psudo_suery_run)>0 ){
 
 
 else{
+    $date=date("j, n, Y");
+                 $addby=$_SESSION['pseudo'];
 
 $req="INSERT INTO userinformation(nom,prenom,email,passwor,psudo,admin) values('$nom','$prenom','$email','$hashd_password','$userName',1)";
-
+$re="INSERT INTO  admin(pseudoo,adminDate,addBy)values('$userName','$date','$addby')";
+$res = mysqli_query($conn,$re);
 
 
 if($conn->query($req)===TRUE){

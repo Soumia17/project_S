@@ -45,7 +45,7 @@ include_once 'includes/database-linck.php';
             </div>
 
             <dive class="but">
-                <input id="sub2" name="suub"  type="submit" value="créer un compte">
+                <input id="sub2" name="suub"  type="submit" value="modifier">
             </div>
     </form>
    

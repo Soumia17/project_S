@@ -11,7 +11,7 @@ $serviceName=$_POST['serviceName'];
 
                  
                  $del=$_GET['del'];
-                 echo $del;
+                 
               
 
                  $req="DELETE FROM services WHERE id='$del'";

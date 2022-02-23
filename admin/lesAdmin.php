@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'includes/database-linck.php';
 $conn;
 
@@ -19,7 +20,7 @@ $conn;
         
         <title>Document</title>
     </head>
-    <body onload="document.getElementById('new_admin').style.display='block';">   
+    <body onload="document.getElementById('new_admin').style.display='block';" >   
             <header class="page-header">
               <nav>
                 
@@ -92,15 +93,17 @@ $conn;
             </header>
             <section class="page-content">
               <section class="search-and-user">
-                <form action="GET">
+               <!-- <form action="GET">
                   <input type="search" placeholder="Chercher...">
                   <button type="submit" aria-label="submit form">
                     <i class="fas fa-search"></i>
                   </button>
-                </form>
+
+                </form>-->
+                
                 <div class="admin-profile">
-                  <span class="greeting">Bonjour  admin</span>
-                  <img class="image_profil"  src="images_Admin/images.jpg" alt="profile_img">
+                  <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
+                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
                   
                   <div class="notifications">
                    <!-- <span class="badge">1</span>-->
@@ -140,39 +143,87 @@ $conn;
                 </article>
                 </section>
                 <section class="Add_Service">
-                    <div class="but_Add_Service">
+                   <!-- <div class="but_Add_Service">
                         <a href="#new_admin" onclick="document.getElementById('new_admin').style.display='block';document.getElementById('con').style.display='block'"><i class="fas fa-plus"></i>ajoute un admin</a>
+              </div>-->
+              <div class="but_Add_Service">
+                        <a href="#new_admin" ><i class="fas fa-plus"></i>ajoute un admin</a>
               </div>
                   </section>
 
                 <section class="etoile" id="etoile">
                     <div class="box-etoile">
                   <?php  
-                  $searsh="SELECT * FROM userinformation WHERE Theadmin=1";
+                  $searsh="SELECT * FROM admin ";
     $admin = mysqli_query($conn,$searsh);
    
+    $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
+    $adm = mysqli_query($conn,$action);
+    while($info=mysqli_fetch_assoc($adm)){
+$admi=$info['Theadmin'];
+//$_SESSION['user']=$info['psudo'];
+//$_SESSION['img']=$info['image'];
+
+
+    }
     
-   
    
    while($infoAdmin=mysqli_fetch_assoc($admin)){?>
                     <div class="card">
-                        <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
+                        <img src="<?php echo ($_SESSION['img']);?>" alt="Avatar" style="width:100%">
                         <div class="card-container">
-                         <a href=""> <h4><b><?php echo ($infoAdmin["psudo"]);?></b></h4> </a>
-                          <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["userDate"]);?> </p>
+                         <a href=""> <h4><b><?php echo ($infoAdmin["pseudoo"]);?></b></h4> </a>
+                          <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["adminDate"]);?> </p>
+                          <p> Ajouter par: <br>   <?php /*echo date("j, n, Y");*/ echo ($infoAdmin["addBy"]);?> </p>
                           
                         </div>
-                        <button id="but_admin"  class="openModal2">envoye un message</button>
-
-                        </div>
                         <?php
-   }
-?>
+                        if($admi==0 && $infoAdmin["pseudoo"]!=$_SESSION['user'] ){
+                        ?>
+                        <button class="but_admin_delet" onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='block'" >Retirer</button>
+                        <?php
+                        }
+                        else
+                        
+                        {
+                          ?>
+                        <button class="but_admin_delet" onfocus="myFunction()" disabled >Retirer</button>
+                        
+                        <?php
+
+                        
+
+
+                        }
+                        ?>
+
+                        
+                        </div>
+                        <div id="<?php echo $infoAdmin["pseudoo"] ?>" class="modal">
+                     
+                     <div class="modalContent">
+                     <span onclick="document.getElementById('<?php echo $infoAdmin['pseudoo'] ?>').style.display='none'" class="close">×</span>
+                     <div class="icon-box">
+                      <span>!</span>
+                    
+                   </div>	
+                     <p>Êtes-vous sûr de vouloir retirer ladmin</p>
+                     
+                     <a name="delet_ad" href="delet_Adm.php?del_ad=<?php echo $infoAdmin["pseudoo"]?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     
+                     <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
+                     </div>
+                      </div>
+
+                        
+                        <?php
+                       }
+                    ?>
                     </div>
                 </section>
                 
 
-                <div id="con" class="modal_condition">
+               <!-- <div id="con" class="modal_condition">
 
                   
                   
@@ -206,7 +257,7 @@ $conn;
                     
                      
                     
-                </div>
+                </div>-->
 
                 
 
@@ -218,6 +269,35 @@ $conn;
                     
 
                <section id="new_admin" >
+               <?php if($admi==0){
+                        ?>
+                        
+               <div id="con" class="modal_condi">
+
+                  
+                  
+                   
+<div class="display_condi">
+  
+  <h3>Attention</h3>
+<div class="condi" onscroll="myFunction()" id="myDIV">
+  
+ <p> L'ajout d'un nouvel administrateur peut entraîner des dangers !</p>
+  <ul>
+   <p> Le nouvel administrateur peut:</p>
+    <li>. Ajoute un nouvel admin .</li>
+    <li>. blocke un contacte .</li>
+    <li>. sepprime et ajoute un service .</li>
+    <li>. sepprime un offer .</li>
+    <li>. repondre aux message .</li>
+   <span> Tout cela peut arriver sans votre consentement.</span>
+  </ul>
+  </div>
+  </div>
+  </div>
+  <?php
+               }
+  ?>
                <label for="">Rechercher un utilisateur :</label>
 <form  action="lesAdmin.php" method="GET">
 <div class="search-box">
@@ -237,23 +317,37 @@ $conn;
         $searsh="SELECT * FROM userinformation WHERE psudo LIKE '%$resu%'";
         $res = mysqli_query($conn,$searsh);
       
-      
+      if(mysqli_num_rows($res)>0){
 
 
         while($infoAdmin=mysqli_fetch_assoc($res)){?>
                  
                     <div class="card">
-                        <img src="images_Admin/téléchargement.jpg" alt="Avatar" style="width:100%">
+                      
+                        <img src="<?php echo($infoAdmin["image"]) ?>" alt="Avatar" style="width:100%">
                         <div class="card-container">
                          <a href=""> <h4><b><?php echo($infoAdmin["psudo"]) ?> </b></h4> </a>
-                          <p> Admin de puis: <br>   <?php /*echo date("j, n, Y");*/ ?> </p>
+                          <p> <br>   <?php /*echo date("j, n, Y");*/ ?> </p>
                           
                         </div>
-                        <button id="but_admin" class="openModal2">envoye un message</button>
+                       <a name="Add_Admin" href="addAdmin.php?newAD=<?php echo $infoAdmin["psudo"]?>"> <button id="but_admin" name="Add_Admin"  class="openModal2">Ajoute comme un admin</button></a>
 
                         </div>
+                     
+               
+              </div>
                         <?php
        }}
+      
+      else{
+        ?>
+        <span class="noResult">aucun resultat trouver</span>
+        <?php
+      }
+      }
+       
+
+
                         ?>
  
                     </div>
