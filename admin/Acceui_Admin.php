@@ -83,7 +83,7 @@ $_SESSION['img']=$info['image'];
                             <div class="dd_right">
                                 <ul>
                                    <a href=""> <li>Profil</li></a>   
-                                   <a href="Administration.html"> <li>Administration</li></a>
+                                   <a href="Administration.php"> <li>Administration</li></a>
                                    <a href=""> <li>Favorites</li> </a>               
                                    <a href=""> <li>Settings</li> </a>
                                    <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
@@ -109,7 +109,7 @@ $_SESSION['img']=$info['image'];
       <div class="service_i_bien">
       <div class="bien">
 
-         <center> <h2>Bien venu <?php echo ( $_SESSION['pseudo']);?> <span></span></h2>
+         <center> <h2>Bien venu <?php echo ($_SESSION['user']);?> <span></span></h2>
           <span>hhhhhhhhhhkhjfgjhgfjtgdj,gggg,tft,jhg</span></center>
       </div>
       <div class="services_bien">

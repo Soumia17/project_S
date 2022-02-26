@@ -35,7 +35,7 @@ $conn;
                   </li>
                   
                     <li>
-                      <a href="http://localhost/PFFE/admin/Administration.html">
+                      <a href="http://localhost/PFFE/admin/Administration.php">
                         
                         <i class="fas fa-home"></i>
                         
@@ -43,7 +43,7 @@ $conn;
                       </a>
                     </li>
                     <li>
-                    <a href="http://localhost/PFFE/admin/Administrateurs.html">
+                    <a href="http://localhost/PFFE/admin/Administrateurs.php">
                       
                       <i class="fas fa-user-shield"></i>
                       
@@ -51,13 +51,13 @@ $conn;
                     </a>
                   </li>
                   <li>
-                    <a href="http://localhost/PFFE/admin/utilisateurs.html">
+                    <a href="http://localhost/PFFE/admin/utilisateurs.php">
                       <i class="fas fa-users"></i>
                       <span>utilisateurs</span>
                     </a>
                   </li>
                   <li>
-                    <a href="http://localhost/PFFE/admin/Message.html">
+                    <a href="http://localhost/PFFE/admin/Message.php">
                       <i class="far fa-comments"></i>
                       <span>Message</span>
                     </a>
@@ -187,7 +187,7 @@ $admi=$info['Theadmin'];
                         
                         {
                           ?>
-                        <button class="but_admin_delet" onfocus="myFunction()" disabled >Retirer</button>
+                        <button class="but_admin_delet"  disabled >Retirer</button>
                         
                         <?php
 
@@ -425,5 +425,3 @@ $admi=$info['Theadmin'];
     <script src="contol_lesAdmin.js"></script>
    
     </html>
-</body>
-</html>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+include_once 'includes/database-linck.php';
+$conn;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +37,7 @@
                   </a>
                 </li>
                 <li>
-                <a href="http://localhost/PFFE/admin/Administrateurs.html">
+                <a href="http://localhost/PFFE/admin/lesAdmin.php">
                   
                   <i class="fas fa-user-shield"></i>
                   
@@ -38,13 +45,13 @@
                 </a>
               </li>
               <li>
-                <a href="http://localhost/PFFE/admin/utilisateurs.html">
+                <a href="http://localhost/PFFE/admin/utilisateurs.php">
                   <i class="fas fa-users"></i>
                   <span>utilisateurs</span>
                 </a>
               </li>
               <li>
-                <a href="http://localhost/PFFE/admin/Message.html">
+                <a href="http://localhost/PFFE/admin/Message.php">
                   <i class="far fa-comments"></i>
                   <span>Message</span>
                 </a>
@@ -80,16 +87,18 @@
         </header>
         <section class="page-content">
           <section class="search-and-user">
-            <form action="GET">
-              <input type="search" placeholder="Chercher...">
-              <button type="submit" aria-label="submit form">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-            <div class="admin-profile">
-              <span class="greeting">Bonjour  admin</span>
-              <img class="image_profil"  src="images_Admin/images.jpg" alt="profile_img">
-              
+                  <!-- <form action="GET">
+                  <input type="search" placeholder="Chercher...">
+                  <button type="submit" aria-label="submit form">
+                    <i class="fas fa-search"></i>
+                  </button>
+
+                </form>-->
+                
+                <div class="admin-profile">
+                  <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
+                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  
               <div class="notifications">
                <!-- <span class="badge">1</span>-->
                 <svg>

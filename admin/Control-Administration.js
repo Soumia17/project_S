@@ -39,3 +39,6 @@ for (let i = 0; i < star.length; i++) {
 		showValue.innerHTML = i + " out of 5";
 	});
 }
+
+
+
