@@ -28,14 +28,15 @@ $conn;
     if(mysqli_num_rows($result1)==1){
         
             while($g=mysqli_fetch_assoc($result1)){
-                $admin=$g['theadmin'];
+                $admin=$g['Theadmin'];
 
             }
-
+            
         
-        if($admin==1 || $admin==0){
+       if($admin==1 || $admin==0){
             $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
+        echo $admin;
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
         echo"yesssss";
         exit();

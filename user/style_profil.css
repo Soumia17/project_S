@@ -369,3 +369,59 @@ body {
     font-size: 14px;
     color: #afafb6;
   }
+ #new_pseudo {
+     background-color: transparent;
+     border-color: transparent;
+     border-bottom: 1px solid #222;
+
+ }
+
+ .btn_new_pseudo{
+     padding-top: 0px;
+ }
+ #cancel{
+     padding: 3px 6px;
+     border-color: #00A300;
+     background-color: transparent;
+     border-radius: 3px;
+
+ }
+
+ #cancel:hover{
+     background-color:#00A300 ;
+ }
+ #update{
+    padding: 3px 6px;
+    background-color:#00A300;
+    border-color: #00A300;
+    border-radius: 3px;
+
+}
+#update:hover{
+    background-color:#039603; 
+}
+
+#icon_change_pseudo{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.profile-content {
+display: flex;
+padding: 40px 34px;
+}
+.profile-content button{
+  height: 30px;
+  margin-top: -5px;
+  margin-left: 5px;
+  background-color: #039603;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color:#fff;
+  font-size: medium;
+  padding: 4px 5px;
+
+}
+.profile-content p{
+  font-size: medium;
+}

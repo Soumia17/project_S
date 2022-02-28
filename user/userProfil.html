@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="/admin/Style_AccuiAdmin.css">
+    <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
     <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style_profil.css">
+    <link rel="stylesheet" href="../admin/StyleService.css">
     <title>Document</title>
    
 </head>
@@ -49,7 +50,7 @@
                         <li class="nr_li dd_main">
                   
     
-                            <img class="image_profil"  src="/admin/images_Admin/admin-avec-roues-dentees.png" alt="profile_img">
+                            <img class="image_profil"  src="../admin/images_Admin/admin-avec-roues-dentees.png" alt="profile_img">
                             
                             <div class="dd_menu">
                                 <div class="dd_left">
@@ -110,11 +111,18 @@
                            
                             <div class="card-block">
                                 <div class="user-image">
-                                    <img src="/admin/images_Admin/admin-avec-roues-dentees.png" id="photo">
+                                    <img src="../admin/images_Admin/admin-avec-roues-dentees.png" id="photo">
                                     <input type="file" id="file">
                                     <label for="file" id="uploadBtn">Choose Photo</label>
                                 </div>
                                 <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
+                               <center> <button id="icon_change_pseudo" onclick="document.getElementById('btn_new_pseudo').style.display='block'; document.getElementById('new_pseudo').style.display='block';document.getElementById('icon_change_pseudo').style.display='none';" > <img src="https://img.icons8.com/ios-glyphs/30/000000/pencil--v1.png"/></button></center>
+                               <center> <input style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
+                                <div class="btn_new_pseudo" id="btn_new_pseudo" style="display: none;">
+                                <button  id="cancel" onclick="document.getElementById('btn_new_pseudo').style.display='none'; document.getElementById('new_pseudo').style.display='none';document.getElementById('icon_change_pseudo').style.display='block';">cancel</button>
+                                <button  id="update">update</button>
+                            </div>
+                               
                                 <p class="text-muted">Membre depuis :</p>
                                 <hr>
                                 <p class="text-muted m-t-15">Utile de communication :</p>
@@ -122,14 +130,14 @@
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
                                     <div class="text-one">codinglab@gmail.com</div>
-                                    <div class="text-two">info.codinglab@gmail.com</div>
+                                   
                                   </div>
                                    
                                     <div class="phone details">
                                       <i class="fas fa-phone-alt"></i>
                                       <div class="topic">Phone</div>
                                       <div class="text-one">+0098 9893 5647</div>
-                                      <div class="text-two">+0096 3434 5678</div>
+                                      
                                     </div>
 
                                    
@@ -165,8 +173,12 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                   Some user related content goes here...
+                   <p> Il semble que vous n'ayez aucune vue active. Mettez-vous en vente !</p>
+                   <button>commencez maintenant</button>
+
+                  
                 </div>
+   
             </div>
         </div>
     </div>
@@ -177,7 +189,7 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <!--<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>-->
-<script src="/admin/Control-Administration.js"></script>
+<script src="../admin/Control-Administration.js"></script>
 <script src="Control_profil.js"></script>
 <script src="https://kit.fontawesome.com/6f2f9c8fbf.js" ></script>
 </body>

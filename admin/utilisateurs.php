@@ -115,22 +115,29 @@ $conn;
            
           </section>
          <section class="etoile" id="etoile">
-            <div class="box-etoile">
-            <label for="">Rechercher un utilisateur :</label>
-<form  action="lesAdmin.php" method="GET">
+            
+           
+<form  action="" method="GET">
 <div class="search-box">
        
          <button name="onSub"  class="btn-search"><i class="fas fa-search"></i></button>
          
-       <input type="search"  name="search" class="input-search" placeholder="Type to Search...">
+       <input type="search"  name="search" class="input-search" placeholder="Chercher un utilisateur...">
        
          
      </div>
      </form>
+     <br>
+     <div class="box-etoile">
             
             <?php
-            $action="SELECT * FROM userinformation WHERE theadmin =2 ";
+            $action="SELECT * FROM userinformation WHERE theadmin =2 and block =0";
+            if(isset($_GET['search']) and !empty($_GET['search'])){
+              $q = htmlspecialchars($_GET['search']);
+              $action="SELECT * FROM userinformation WHERE theadmin =2 AND  block =0 and psudo LIKE '%".$q."%'  ";
+            }
             $adm = mysqli_query($conn,$action);
+            if(mysqli_num_rows($adm)>0){
             while($info=mysqli_fetch_assoc($adm)){
             ?>
               <div class="card">
@@ -139,7 +146,7 @@ $conn;
                  <a href=""> <h4><b><?php echo($info['psudo'])?></b></h4> </a>
                    
                 </div>
-                <button id="but_card" onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='block'">bloqué client</button>
+                <button id="but_card" onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='block'">bloqué utilisateur</button>
 
                 <div id="<?php echo $info['psudo'] ?>" class="modal">
                      
@@ -147,13 +154,15 @@ $conn;
                      <span onclick="document.getElementById('<?php echo $info['psudo'] ?>').style.display='none'" class="close">×</span>
                      <div class="icon-box">
                       <span>!</span>
+
                     
                    </div>	
-                     <p>Êtes-vous sûr de vouloir retirer ladmin</p>
+                     <p>Êtes-vous sûr de vouloir blocker utilisateur</p>
                      
-                     <a name="delet_ad" href="delet_Adm.php?del_ad=<?php $info['psudo']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
+                     <a name="delet_ad" href="blockerutilisateur.php?blok_uti=<?php echo $info['psudo']?>"><button   class="del" onclick="hideModal()">Supprimer</button></a>
                      
                      <button type="button"  class="cancel" onclick="hideModal()">Annuler</button>
+
                      </div>
                 
 
@@ -161,7 +170,13 @@ $conn;
 
               </div>
               <?php
-            }
+              
+            }}
+            else {
+            ?>
+        <span class="noResult">aucun resultat trouver</span>
+        <?php
+}
               ?>
               </div>
          </section>          
