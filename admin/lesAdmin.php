@@ -28,7 +28,10 @@ $conn;
                   <i class="fas fa-bars"></i>
                 </button>
                 <ul class="admin-menu">
-                  <a href="">LOGO</a>
+                <center> <div class="left">
+                <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
+                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  </div></center>
                   <li class="menu-heading">
     
                     <h3>Admin</h3>
@@ -102,8 +105,9 @@ $conn;
                 </form>-->
                 
                 <div class="admin-profile">
-                  <span class="greeting">Bonjour  <?php echo ($_SESSION['user']); ?></span>
-                  <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
+                  <!--
+                  <span class="greeting">Bonjour  <?php// echo ($_SESSION['user']); ?></span>
+                  <img class="image_profil"  src="<?php// echo ($_SESSION['img']);?>" alt="profile_img">-->
                   
                   <div class="notifications">
                    <!-- <span class="badge">1</span>-->

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="../admin/Style_AccuiAdmin.css">
-    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   <!-- <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="style_profil.css">
     <link rel="stylesheet" href="../admin/StyleService.css">
     <title>Document</title>
    
 </head>
-<body>
+<body >
 
     <header class="header">
   
@@ -117,10 +117,12 @@
                                 </div>
                                 <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
                                <center> <button id="icon_change_pseudo" onclick="document.getElementById('btn_new_pseudo').style.display='block'; document.getElementById('new_pseudo').style.display='block';document.getElementById('icon_change_pseudo').style.display='none';" > <img src="https://img.icons8.com/ios-glyphs/30/000000/pencil--v1.png"/></button></center>
+                               <div id="anulle">
                                <center> <input style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
                                 <div class="btn_new_pseudo" id="btn_new_pseudo" style="display: none;">
                                 <button  id="cancel" onclick="document.getElementById('btn_new_pseudo').style.display='none'; document.getElementById('new_pseudo').style.display='none';document.getElementById('icon_change_pseudo').style.display='block';">cancel</button>
                                 <button  id="update">update</button>
+                            </div>
                             </div>
                                
                                 <p class="text-muted">Membre depuis :</p>
@@ -171,23 +173,94 @@
                         </div>
                   
             </div>
-            <div class="col-md-9">
+           <!-- <div class="col-md-9">
                 <div class="profile-content">
                    <p> Il semble que vous n'ayez aucune vue active. Mettez-vous en vente !</p>
-                   <button>commencez maintenant</button>
+                  <a href="addOffer.html"> <button >commencez maintenant</button></a>
+
+
+                 
+
+
 
                   
-                </div>
+                </div>-->
+
+                
+
+                                        
+                <div class="main">
+
+                    <!--cards -->
+                   
+                   <div class="card">
+                   
+                   <div class="image">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg/1199px-Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg">
+                   </div>
+                   <div class="des">
+                    <span class="spn">Description :</span>
+                    <p>You can Add Desccription Here...</p>
+                   
+                   </div>
+
+                   <div class="title">
+                       
+                    <span class="spn">Evaluation :</span>
+                    <div class="center">
+                        
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+                            <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
+                            <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+                            <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
+                            <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+                            <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
+                            <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+                            <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
+                            <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+                            <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
+                        </fieldset>
+
+                        
+                    </div>
+ 
+                   </div>
+                   <div class="des">
+                    <span class="spn">Le type:</span>
+                   
+ 
+                   </div>
+                   <div class="des">
+                    <span class="spn">prix:</span>
+                   
+ 
+                   </div>
+                   
+                   
+                  <a href="modifierOffer.php"> <button class="des_btn">Read More...</button></a>
+                   </div>
+                   <!--cards -->
+                   
+                   
+                  
+
+                
    
             </div>
+            
         </div>
+
+        
     </div>
+
     
     <br>
     <br>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<script src="Control-Administration.js"></script>
 <!--<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>-->
 <script src="../admin/Control-Administration.js"></script>
 <script src="Control_profil.js"></script>

@@ -37,10 +37,10 @@
     outline: none;
     border-radius: 25px;
     transition: all .5s ease-in-out;
-    /*background-color: #22a6b3;*/
-    background-color: #d41313;
+    background-color: #22a6b3;
+    
     padding-right: 40px;
-    color:#fff;
+    color:black;
 
   }
   .input-search::placeholder{

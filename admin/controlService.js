@@ -96,7 +96,7 @@ var enviar = document.getElementById("enviar");
 var alert= document.getElementById("echoAlert");
 enviar.addEventListener('submit',function(e){
  
-
+  
   if (document.getElementById('customx').value === ""){
    
     
@@ -107,6 +107,9 @@ enviar.addEventListener('submit',function(e){
     e.preventDefault();
   }
   
+    
+
+  
   if (document.getElementById('textarea').value === ""){
    
     
@@ -115,6 +118,7 @@ enviar.addEventListener('submit',function(e){
  
     e.preventDefault();
   }
+
 
   if (fileUpload.files.length == 0) {
    

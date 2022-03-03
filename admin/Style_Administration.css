@@ -1080,10 +1080,9 @@ h2 {
 /*Section newService_Formulair */
 .newService_Formulair{
   padding:2rem ;
-  
+
   justify-items: center;
-  display: none;
-  
+  display: none; 
 }
 
 
