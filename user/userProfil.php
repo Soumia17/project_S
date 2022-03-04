@@ -1,3 +1,42 @@
+<?php
+session_start();
+include_once '../includes/database-linck.php';
+$conn;
+
+
+if(isset($_POST['up'])){
+    $psudo_suery="SELECT * FROM userinformation WHERE psudo ='".$_POST['newPseudo']."'";
+    $psudo_suery_run=mysqli_query($conn,$psudo_suery);
+    if(mysqli_num_rows($psudo_suery_run)>0){?>
+        <!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Document</title>
+     </head>
+     <body>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script  >
+ //alert("email existe deja");
+ swal("pseudo existe deja!");
+</script>
+     </body>
+     </html>
+       <?php
+       }
+       else{
+
+    $re="UPDATE userinformation
+    SET  psudo= '".$_POST['newPseudo']."'
+    WHERE email='".$_SESSION['pseudo']."'";
+    $res = mysqli_query($conn,$re);
+    $_SESSION['user']=$_POST['newPseudo'];
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +77,19 @@
                         </li>
                        
     
-                        <li class="nr_li">
-                            <i class="fas fa-user-shield"></i>
-                        </li>
+                        <?php
+                    
+                    if($_SESSION['admin']==1){
+                    ?>
+                   
+
+                    <li class="nr_li">
+                      <a href="Administration.php">  <i class="fas fa-user-shield"></i></a>
+                    </li>
+                    <?php
+                    }
+
+                    ?>
                         
                        
                         <li class="nr_li">
@@ -50,13 +99,13 @@
                         <li class="nr_li dd_main">
                   
     
-                            <img class="image_profil"  src="../admin/images_Admin/admin-avec-roues-dentees.png" alt="profile_img">
+                            <img class="image_profil"  src="<?php echo ($_SESSION['img']);?>" alt="profile_img">
                             
                             <div class="dd_menu">
                                 <div class="dd_left">
                                     <ul>
                                         <li><i class="far fa-user"></i></li>
-                                        <li><i class="fas fa-user-shield"></i></li>
+                                       <!-- <li><i class="fas fa-user-shield"></i></li>-->
                                         <li><i class="fas fa-bookmark"></i></li>
                                         
                                         <li><i class="fas fa-cog"></i></li>
@@ -67,7 +116,7 @@
                                 <div class="dd_right">
                                     <ul>
                                        <a href=""> <li>Profil</li></a>   
-                                       <a href="Administration.php"> <li>Administration</li></a>
+                                      <!-- <a href="Administration.php"> <li>Administration</li></a>-->
                                        <a href=""> <li>Favorites</li> </a>               
                                        <a href=""> <li>Settings</li> </a>
                                        <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      
@@ -111,34 +160,36 @@
                            
                             <div class="card-block">
                                 <div class="user-image">
-                                    <img src="../admin/images_Admin/admin-avec-roues-dentees.png" id="photo">
+                                    <img src="<?php echo ($_SESSION['img']);?>" id="photo">
                                     <input type="file" id="file">
-                                    <label for="file" id="uploadBtn">Choose Photo</label>
+                                    <label for="file" id="uploadBtn">Choisir une Photo</label>
                                 </div>
-                                <h6 class="f-w-600 m-t-25 m-b-10">Alessa Robert</h6>
+                                <h6 class="f-w-600 m-t-25 m-b-10"><?php echo ($_SESSION['user']); ?></h6>
                                <center> <button id="icon_change_pseudo" onclick="document.getElementById('btn_new_pseudo').style.display='block'; document.getElementById('new_pseudo').style.display='block';document.getElementById('icon_change_pseudo').style.display='none';" > <img src="https://img.icons8.com/ios-glyphs/30/000000/pencil--v1.png"/></button></center>
                                <div id="anulle">
-                               <center> <input style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
+                                   <form action="userProfil.php" method="POST">
+                               <center> <input name="newPseudo" style="display: none;" type="text" id="new_pseudo" placeholder="entre le neveu pseudo" ></center><br>
                                 <div class="btn_new_pseudo" id="btn_new_pseudo" style="display: none;">
                                 <button  id="cancel" onclick="document.getElementById('btn_new_pseudo').style.display='none'; document.getElementById('new_pseudo').style.display='none';document.getElementById('icon_change_pseudo').style.display='block';">cancel</button>
-                                <button  id="update">update</button>
+                                <button name="up" id="update">update</button>
+                                </form>
                             </div>
                             </div>
                                
-                                <p class="text-muted">Membre depuis :</p>
+                                <p class="text-muted">Membre depuis : <?php  echo $_SESSION['dat'] ;?></p>
                                 <hr>
                                 <p class="text-muted m-t-15">Utile de communication :</p>
                                 <div class="email details">
                                     <i class="fas fa-envelope"></i>
                                     <div class="topic">Email</div>
-                                    <div class="text-one">codinglab@gmail.com</div>
+                                    <div class="text-one"><?php echo $_SESSION['pseudo']?></div>
                                    
                                   </div>
                                    
                                     <div class="phone details">
                                       <i class="fas fa-phone-alt"></i>
                                       <div class="topic">Phone</div>
-                                      <div class="text-one">+0098 9893 5647</div>
+                                      <div class="text-one"><?php echo $_SESSION['phone']?></div>
                                       
                                     </div>
 
@@ -173,10 +224,16 @@
                         </div>
                   
             </div>
-           <!-- <div class="col-md-9">
+
+            <?php
+            $Offer="SELECT * FROM offers WHERE OfferPoster ='".$_SESSION['pseudo']."'";
+            $Offer_run=mysqli_query($conn,$Offer);
+            if(mysqli_num_rows($Offer_run)==0){
+            ?>
+           <div class="col-md-9">
                 <div class="profile-content">
                    <p> Il semble que vous n'ayez aucune vue active. Mettez-vous en vente !</p>
-                  <a href="addOffer.html"> <button >commencez maintenant</button></a>
+                  <a href="addOffer.php"> <button >commencez maintenant</button></a>
 
 
                  
@@ -184,9 +241,14 @@
 
 
                   
-                </div>-->
+                </div>
 
-                
+                <?php
+            }
+            else{
+
+                while($g=mysqli_fetch_assoc($Offer_run)){
+                ?>
 
                                         
                 <div class="main">
@@ -196,11 +258,11 @@
                    <div class="card">
                    
                    <div class="image">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg/1199px-Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg">
+                      <img src="<?php echo "../admin/images_Admin/".$g['OfferImage'] ?>">
                    </div>
                    <div class="des">
                     <span class="spn">Description :</span>
-                    <p>You can Add Desccription Here...</p>
+                    <p><?php echo $g['OfferDescription']?></p>
                    
                    </div>
 
@@ -227,23 +289,27 @@
  
                    </div>
                    <div class="des">
-                    <span class="spn">Le type:</span>
+                    <span class="spn">Le type: <?php echo $g['OfferCategore']?></span>
                    
  
                    </div>
                    <div class="des">
-                    <span class="spn">prix:</span>
+                    <span class="spn">prix: <?php echo $g['OfferPrix']?> DZ</span>
                    
  
                    </div>
                    
                    
-                  <a href="modifierOffer.php"> <button class="des_btn">Read More...</button></a>
+                  <a href="modifierOffer.php"> <button class="des_btn">Modifier</button></a>
                    </div>
                    <!--cards -->
                    
                    
+                  <?php
+                  $_SESSION['off']=$g['idOffer'];
+                  }}
                   
+                  ?>
 
                 
    

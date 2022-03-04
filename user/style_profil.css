@@ -692,6 +692,14 @@ textarea{
 
   margin: 2%;
  }
+ .mainD{
+
+  margin: 2%;
+  width: 40%;
+  margin-top: 7%;
+  
+  
+ }
  
  .card{
       width: 20%;
@@ -701,7 +709,7 @@ textarea{
       margin: 2%;
      }
      .cardd{
-      width: 65%;
+      width: 100%;
       display: inline-block;
       box-shadow: 2px 2px 20px black;
       border-radius: 5px; 
@@ -716,6 +724,7 @@ textarea{
  
   
   }
+ 
  
  .title{
   
@@ -766,6 +775,15 @@ textarea{
 .offe{
   
  display: flex;
+ 
 
   
+}
+
+.but_Hors_Service button{
+  background-color:#00A300;
+  width:150px ;
+  height: 40px;
+  color: #fff;
+  border-color: transparent;
 }

@@ -1,7 +1,23 @@
 <?php
+session_start();
 
 include_once '../includes/database-linck.php';
 $conn;
+//$id=$_GET['off'];
+$id=$_SESSION['off'];
+
+$Offer="SELECT * FROM offers WHERE idOffer ='".$id."'";
+            $Offer_run=mysqli_query($conn,$Offer);
+
+            while($g=mysqli_fetch_assoc($Offer_run)){
+             $OfferCategore= $g['OfferCategore'];
+             $OfferDescription=$g['OfferDescription'];
+             $OfferImage=$g['OfferImage'];
+             $OfferPrix=$g['OfferPrix'];
+
+
+            }
+
 
 ?>
 
@@ -85,69 +101,55 @@ $conn;
         </div>	   
       </header>
      
-<div class="offe">
-        <div class="main">
+<div class="offe" >
+        <div class="mainD">
 
             <!--cards -->
-           
+          
            <div class="cardd">
            
            <div class="image">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg/1199px-Gfp-missouri-st-louis-clubhouse-pond-and-scenery.jpg">
+              <img src="<?php echo "../admin/images_Admin/".$OfferImage ?>">
            </div>
            <div class="des">
             <span class="spn">Description :</span>
-            <p>You can Add Desccription Here...</p>
+            <p><?php echo $OfferDescription ?></p>
            
            </div>
 
-           <div class="title">
-               
-            <span class="spn">Evaluation :</span>
-            <div class="center">
-                
-                <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
-                    <input type="radio" id="star4.5" name="rating" value="4.5"/><label for="star4.5" class="half"></label>
-                    <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
-                    <input type="radio" id="star3.5" name="rating" value="3.5"/><label for="star3.5" class="half"></label>
-                    <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
-                    <input type="radio" id="star2.5" name="rating" value="2.5"/><label for="star2.5" class="half"></label>
-                    <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
-                    <input type="radio" id="star1.5" name="rating" value="1.5"/><label for="star1.5" class="half"></label>
-                    <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
-                    <input type="radio" id="star0.5" name="rating" value="0.5"/><label for="star0.5" class="half"></label>
-                </fieldset>
-
-                
-            </div>
-
-           </div>
+           
            <div class="des">
-            <span class="spn">Le type:</span>
+            <span class="spn">Le type:<?php echo $OfferCategore ?></span>
            
 
            </div>
            <div class="des">
-            <span class="spn">prix:</span>
+            <span class="spn">prix:<?php echo $OfferPrix ?> DZ</span>
            
 
            </div>
            
-           
-          <a href="modifierOffer.php"> <button class="des_btn">Supprimer</button></a>
+          <form action="updOfer.php" method="POST">
+          <button name="dellet" class="des_btn">Supprimer</button>
+          </form>
            </div>
         </div>
-        <div class="offe">
+        <div class="offe" >
         
       <section id="newService_Formulair" class="newService_Formulair">
             
               
-        <form id="enviar" action="isertOffre.php" method="POST" >
+              <div class="but_Hors_Service">
+              <form action="">
+               <button>Metre Hors service</button>
+               </form>
+      </div>
+              
+        <form id="enviar" action="updOfer.php" method="POST" >
 
          
          
-          <h2>Ajouter un nouveau Offre</h2>
+          <h2>Modifier l Offre</h2>
 
          <center> <div class="alert" id="alert" >
 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -156,7 +158,7 @@ $conn;
               
               
                   <label for=""> Description du service</label>
-                  <input name="OfferDescription" id="customx" type="text" class="field" >
+                  <input name="OfferDescription" id="customx" type="text" class="field"  value="<?php echo $OfferDescription ?>">
                   <span>Entrez une description clair qui décrit l offre. N'entrez pas de symboles ou de mots tels que « exclusivement », « pour la première fois », « pour un temps limité », etc.</span>
                   <span>Vous devriez utiliser des phrases comme , je vais concevoir, je vais développer...</span>
                   <br><br>
@@ -165,8 +167,18 @@ $conn;
                   <div class="boxx">
             
                     <select id="test" name="OfferCategore" >
-                      <option value=" ">Selectionne le type</option>
-                     
+                      <option value="<?php echo $OfferCategore ?> "><?php echo $OfferCategore ?></option>
+                      <?php 
+                      $req="SELECT serviceName  FROM services";
+                      $res = mysqli_query($conn,$req);
+                      while($resul=mysqli_fetch_assoc($res)){
+                          if($resul['serviceName']!=$OfferCategore){
+
+                      ?>
+                      <option value="<?php echo ($resul['serviceName'])?>"><?php echo ($resul['serviceName'])?></option>
+                      <?php
+                      }}
+                      ?>
                     </select>  
                     
                     
@@ -174,7 +186,7 @@ $conn;
                   
                     <label >Le prix:</label><br>
                     <div id="prix">
-                    <input type="text" class="inpPrix" placeholder="donne un prix" name="OfferPrix"  ><span>DZ</span>
+                    <input type="text" class="inpPrix" placeholder="donne un prix" name="OfferPrix" value="<?php echo$OfferPrix ?>" ><span>DZ</span>
                 </div>
                  
 

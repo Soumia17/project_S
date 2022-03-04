@@ -8,9 +8,11 @@ $action="SELECT * FROM userinformation WHERE email ='".$_SESSION['pseudo']."' ";
 $admi=$info['Theadmin'];
 $_SESSION['user']=$info['psudo'];
 $_SESSION['img']=$info['image'];
-
+$_SESSION['dat']=$info['userDate'];
+$_SESSION['phone']=$info['phone'];
 
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +47,20 @@ $_SESSION['img']=$info['image'];
                     <li class="nr_li">
                         <i class="fas fa-plus"></i>
                     </li>
+
+                    <?php
+                    
+                    if($_SESSION['admin']==1){
+                    ?>
                    
 
                     <li class="nr_li">
-                        <i class="fas fa-user-shield"></i>
+                      <a href="Administration.php">  <i class="fas fa-user-shield"></i></a>
                     </li>
-                    
+                    <?php
+                    }
+
+                    ?>
                    
                     <li class="nr_li">
                         <i class="fas fa-envelope-open-text"></i>
@@ -72,7 +82,7 @@ $_SESSION['img']=$info['image'];
                             <div class="dd_left">
                                 <ul>
                                     <li><i class="far fa-user"></i></li>
-                                    <li><i class="fas fa-user-shield"></i></li>
+                                   <!-- <li><i class="fas fa-user-shield"></i></li>-->
                                     <li><i class="fas fa-bookmark"></i></li>
                                     
                                     <li><i class="fas fa-cog"></i></li>
@@ -82,8 +92,8 @@ $_SESSION['img']=$info['image'];
                             </div>
                             <div class="dd_right">
                                 <ul>
-                                   <a href=""> <li>Profil</li></a>   
-                                   <a href="Administration.php"> <li>Administration</li></a>
+                                   <a href="../user/userProfil.php"> <li>Profil</li></a>   
+                                  <!-- <a href="Administration.php"> <li>Administration</li></a>-->
                                    <a href=""> <li>Favorites</li> </a>               
                                    <a href=""> <li>Settings</li> </a>
                                    <a href=" http://localhost/PFFE/admin/deconnextion.php"><li>Deconnextion</li></a>      

@@ -29,14 +29,42 @@ $conn;
         
             while($g=mysqli_fetch_assoc($result1)){
                 $admin=$g['Theadmin'];
+                $block=$g['block'];
+
+            }
+            if($block==1){
+                ?>
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Document</title>
+                </head>
+                <body>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         
+         <script  >
+            //alert("email existe deja");
+            swal("le compte spécifié n’existe pas!").then(function(){
+                window.location= "http://localhost/PFFE/login_System/Formulaire.html"
+            });
+         </script>
+                </body>
+                </html>
+            
+            
+            <?php
 
             }
             
-        
+        else{
        if($admin==1 || $admin==0){
             $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
-        echo $admin;
+        $_SESSION['admin']=1;
         header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
         echo"yesssss";
         exit();
@@ -46,10 +74,11 @@ $conn;
         else{
         $_SESSION['pseudo'] = $_POST['pseudo'];
         $_SESSION['passW'] = $passwo;
-        header('location: http://localhost/PFFE/login_System/p.php');
+        $_SESSION['admin']=0;
+        header('location: http://localhost/PFFE/admin/Acceui_Admin.php');
         echo"yesssss";
         exit();
-    }
+    }}
     }
     else{
         ?>

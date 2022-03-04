@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once 'includes/database-linck.php';
 $conn;
 if (isset($_POST["serviceName"])){
